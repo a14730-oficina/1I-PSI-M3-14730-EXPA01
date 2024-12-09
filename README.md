@@ -1,25 +1,35 @@
 # 1I-PSI-M3-14730-EXPA01
-def calcula_area_triagulo():
-    base = float(input("Introduza a base do triângulo: "))
-    altura = float(input("Introduza a altura do triângulo: "))
-    area = (base * altura) / 2
-    return area
-def calcula_area_circulo():
-    raio = float(input("Introduza o raio do círculo: "))
-    area = 3.14 * raio ** 2
-    return area
-def calcula_area_retangulo():
-    base = float(input("Introduza a base do retângulo: "))
-    altura = float(input("Introduza a altura do retângulo: "))
-    area = base * altura
-    return area
-opcao = int(input("Qual figura deseja calcular a área? \n1. Triângulo \n2. Círculo \n3. Retângulo \n"))
-if opcao == 2:
-    area = calcula_area_circulo()
-    print(f"A área do círculo é: {area}")
-elif opcao == 1:
-    area = calcula_area_triagulo()
-    print(f"A área do triângulo é: {area}")
-elif opcao == 3:
-    area = calcula_area_retangulo()
-    print(f"A área do retângulo é: {area}")
+import random
+
+def gerar_numero():
+    return random.randint(1, 20)
+def exit():
+    print("Bem-vindo vamos começar!")
+    print("----------GUESS THE NUMBER----------")
+    nome = input("mete o seu nome: ")
+    numero = gerar_numero()
+    tentativas = 6
+    vencedor = False
+    while tentativas > 0:
+        print(f"\n{nome},tens {tentativas} tentativas restantes.")
+        tentativa = int(input("insira um valor (0-20): "))
+
+        if tentativa < numero:
+            print("superior.")
+        elif tentativa > numero:
+            print("inferior.")
+        else:
+            print(f"Parabéns {nome}, acertas-te!")
+            vencedor = True
+            break
+        tentativas -= 1
+    if not vencedor:
+        print(f"Que pena! O número certo era {numero}.")
+
+    jogar_novamente = input("queres jogar outra vez? (s/n): ")
+    if jogar_novamente.lower() == 's':
+        exit()
+    else:
+        print(f"{nome} espero que tenhas gostado, obrigado(a)!")
+if "__exit__":
+    exit()
