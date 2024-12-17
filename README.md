@@ -1,4 +1,5 @@
-# 1I-PSI-M3-14730-EXPA01
+# Guess The Number.
+
 import random
 
 def gerar_numero():
